@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="src/mycss.css">
+        <script type="text/javascript" src="src/angular/angular.js"></script>
+        <script type="text/javascript" src="src/angular/angular-animate.js"></script>
+        <script type="text/javascript" src="src/scripts/app.js"></script>
+        <script type="text/javascript" src="src/scripts/MenuController.js"></script>
+        <script type="text/javascript" src="src/scripts/SearchController.js"></script>
+        <script type="text/javascript" src="src/scripts/SearchService.js"></script>
+        <script type="text/javascript" src="src/scripts/directives/e/filter-bar.js"></script>
+    </head>
+    <body ng-app="applicationName" >
+        
+            <div  class="body-content" ng-controller="MenuController as mc">
+                <div class="header w3-round-large" >
+                    <a class="main-menu-button menu-button w3-round-large" ng-click="mc.switchMenu()">&#9776;</a>
+                    <abbr>Header Text</abbr>
+                    <a class="main-menu-button login-button w3-round-large">L</a>
+                </div>
+                <div class="main-menu" ng-show="menu.isShowing">
+                        <ul class="main-menu-commands-list fade">
+                            <li class="fade  menu-button-class round-lb-rt" ng-click="mc.switchFilter()">
+                                <a >&#10097; Search...</a>
+                            </li>
+                            <li class="fade  menu-button-class round-lb-rt" >&#10097; Feature 2</li>
+                            <li class="fade  menu-button-class round-lb-rt" >&#10097; Feature 3</li>
+                            <li class="fade  menu-button-class round-lb-rt" >&#10097; {{ menu.isShowing }}</li>
+                            <li class="fade  menu-button-class round-lb-rt" >
+                                <a ng-click="mc.hideMenu()">&#10097; Close</a>
+                            </li>
+                        </ul>
+                </div>
+                <div class="content w3-round-large" style="width: {{menu.getContentSize()}};" ng-controller="SearchController as sc">
+                    <div filter-bar class="filter-bar w3-round-large" ng-show="filter.isShowing"></div>
+                    <table class="results-table">    
+                        <tr ng-class-odd="'odd'" 
+                            ng-class-even="'even'" 
+                            ng-repeat="record in resultSet" 
+                            ng-click="sc.rowClick(record.id)">
+                            <td>{{record.id}}</td>
+                            <td>{{record.date | date}}</td>
+                            <td>{{record.keyword}}</td>
+                        </tr>
+                    </table>
+                </div>
+<!--                <div class="footer w3-round-large">
+                    <abbr>footer text</abbr>
+                </div>-->
+
+            </div>
+    </body>
+</html>
