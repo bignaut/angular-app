@@ -32,7 +32,7 @@ public class SearchController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public List<SampleObject> getByName(@RequestParam(required=true) String value){
         List<SampleObject> lst = new ArrayList<>();
-        for(int i=0; i<10; i++){
+        for(int i=0; i<20; i++){
             lst.add(new SampleObject(i, new Date(), "Keyword "+value+" "+i));
         }
         return lst;

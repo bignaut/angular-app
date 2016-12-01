@@ -25,9 +25,11 @@
 }
 
 .filter-bar {
+    float: right;
     font-family: black, sans-serif;
     background: hsla(15, 100%, 60%, 0.5);
-    margin: 0px 0px 0px 0px;
+    margin: 0;
+    margin-top: 5px;
     padding: 5px;
     box-sizing: border-box;
     z-index: auto;
@@ -44,7 +46,7 @@
     margin: 0;
     margin-top: 5px;
     margin-bottom: 5px;
-    background: hsla(48, 100%, 70%, 1);
+    background: hsla(48, 100%, 80%, 1);
     box-sizing: border-box;
     height: 75%;
     padding: 5px;
@@ -53,6 +55,12 @@
     overflow: auto;
     font-family: sans-serif;
 }
+
+.results-table {
+    width: 100%;
+    text-align: center;
+}
+
 td {
     border: 1px solid;
     border-color: hsla(48, 100%, 80%, 0);
@@ -63,7 +71,7 @@ td {
 
 tr:hover td {
     
-    border-bottom: 1px black solid;
+    border-bottom: 1px black dotted;
 }
 
 .odd{
@@ -146,7 +154,7 @@ tr:hover td {
     font-size: 24px;
     text-align: left;
     overflow: hidden;
-    box-shadow: 5px 5px 5px 5px hsla(48, 100%, 70%, 1);
+    box-shadow: 5px 5px 5px 5px hsla(48, 100%, 80%, 1);
 }
 
 .menu-button-class:hover{
@@ -154,6 +162,33 @@ tr:hover td {
     background: white;
 }
 
+.simple-button {
+    background: -webkit-linear-gradient(-90deg, rgba(255,255,255,1) 0, rgba(175,104,36,0.65) 100%);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 0, rgba(175,104,36,0.65) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0, rgba(175,104,36,0.65) 100%);
+    background-position: 50% 50%;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-size: auto auto;
+    border-radius: 8px;
+}
+
+.cell-button {
+    box-sizing: border-box;
+    /*border: 1px black solid;*/
+    /*border-radius: 8px;*/
+    background-repeat: repeat;
+    height: 16px;
+    width: 16px;
+}
+
+.btn-delete {
+    background-image: url('img/buttons/16x16/delete.png');
+}
+
+.btn-edit {
+    background-image: url('img/buttons/16x16/edit.png');
+}
 .round-lb-rt {
     border-top-left-radius: 0px;
     border-top-right-radius: 16px;

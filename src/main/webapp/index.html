@@ -8,6 +8,9 @@
         <script type="text/javascript" src="src/angular/angular.js"></script>
         <script type="text/javascript" src="src/angular/angular-animate.js"></script>
         <script type="text/javascript" src="src/scripts/app.js"></script>
+        <script type="text/javascript" src="src/scripts/UserController.js"></script>
+        <script type="text/javascript" src="src/scripts/UserService.js"></script>
+        <script type="text/javascript" src="src/scripts/ItemController.js"></script>
         <script type="text/javascript" src="src/scripts/MenuController.js"></script>
         <script type="text/javascript" src="src/scripts/SearchController.js"></script>
         <script type="text/javascript" src="src/scripts/SearchService.js"></script>
@@ -18,7 +21,7 @@
             <div  class="body-content" ng-controller="MenuController as mc">
                 <div class="header w3-round-large" >
                     <a class="main-menu-button menu-button w3-round-large" ng-click="mc.switchMenu()">&#9776;</a>
-                    <abbr>Header Text</abbr>
+                    <abbr class="credentials" ng-controller="UserController as uc">user = {{user.firstName}} {{user.lastName}} {{user.loggedIn}}</abbr>
                     <a class="main-menu-button login-button w3-round-large">L</a>
                 </div>
                 <div class="main-menu" ng-show="menu.isShowing">
@@ -26,27 +29,34 @@
                             <li class="fade  menu-button-class round-lb-rt" ng-click="mc.switchFilter()">
                                 <a >&#10097; Search...</a>
                             </li>
-                            <li class="fade  menu-button-class round-lb-rt" >&#10097; Feature 2</li>
+                            <li class="fade  menu-button-class round-lb-rt" >&#10097; New...</li>
                             <li class="fade  menu-button-class round-lb-rt" >&#10097; Feature 3</li>
-                            <li class="fade  menu-button-class round-lb-rt" >&#10097; {{ menu.isShowing }}</li>
+                            <li class="fade  menu-button-class round-lb-rt" >&#10097; Report</li>
                             <li class="fade  menu-button-class round-lb-rt" >
                                 <a ng-click="mc.hideMenu()">&#10097; Close</a>
                             </li>
                         </ul>
                 </div>
-                <div class="content w3-round-large" style="width: {{menu.getContentSize()}};" ng-controller="SearchController as sc">
-                    <div filter-bar class="filter-bar w3-round-large" ng-show="filter.isShowing"></div>
-                    <table class="results-table">    
-                        <tr ng-class-odd="'odd'" 
-                            ng-class-even="'even'" 
-                            ng-repeat="record in resultSet" 
-                            ng-click="sc.rowClick(record.id)">
-                            <td>{{record.id}}</td>
-                            <td>{{record.date | date}}</td>
-                            <td>{{record.keyword}}</td>
-                        </tr>
-                    </table>
-                </div>
+                    <div filter-bar class="filter-bar w3-round-large" style="width: {{menu.getContentSize()}};" ng-show="filter.isShowing"></div>
+                    <div class="content w3-round-large" style="width: {{menu.getContentSize()}};" ng-controller="SearchController as sc">
+                        <table class="results-table">    
+                            <tr ng-show="resultSet.length>0">
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Keyword</th>
+                            </tr>
+                            <tr ng-controller="ItemController as ic"
+                                ng-class-odd="'odd'" 
+                                ng-class-even="'even'" 
+                                ng-repeat="record in resultSet" >
+                                <td>{{record.id}}</td>
+                                <td>{{record.date | date}}</td>
+                                <td>{{record.keyword}}</td>
+                                <td><img class="cell-button btn-edit" src="src/img/buttons/16x16/edit.png" alt="[>]" ng-click=""/></td>
+                                <td><img class="cell-button btn-delete" src="src/img/buttons/16x16/delete.png" alt="[X]" ng-click="ic.deleteItem($index);"/></td>
+                            </tr>
+                        </table>
+                    </div>
 <!--                <div class="footer w3-round-large">
                     <abbr>footer text</abbr>
                 </div>-->

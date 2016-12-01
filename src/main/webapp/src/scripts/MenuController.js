@@ -1,4 +1,4 @@
-angular.module('applicationName').controller('MenuController', function($scope, SearchService){
+angular.module('applicationName').controller('MenuController',['$scope', function($scope){
     
     $scope.menu = {};
     $scope.menu.isShowing = true;
@@ -27,5 +27,5 @@ angular.module('applicationName').controller('MenuController', function($scope, 
     this.hideFilter = function() {
         $scope.filter.isShowing = false;
     };
-});
+}]);
 
